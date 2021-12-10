@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    {% load static %}
+
+    <header class="row bg-black">
+        <div class="col-md-4">
+            <img src="{% static 'portafolio/Andre.jpg' %}" alt="" width="350" height="400">
+        </div>
+
+        <div class="col-md-8 my-auto">
+            <h1>I am <strong>Sigi Andre Diaz Quiroz</strong></h1>
+            <h3>I am a Python FullStack Developer</h3>
+            <p>Seria el agrado presentarme a todos lo que están observando mi pagina web, CIBERNET fue fundada
+            por mi. Mi nombre es Sigi Andre. Seria un gusto atenderle sus dudas y puedan realizarlo a la brevedad
+            posible.
+            CIBERNET es una empresa en dar soluciones a nuestro aparatos tecnológicos, que se constituye en este año 
+            2017, con el objetivo principal de satisfacer las necesidades de nuestros clientes con productos y 
+            servicios (mantenimiento de computadora y laptop, diseño gráfico, ediciones de vídeos y programación 
+            escritorio, web y movil (Software developer at Backend and Frontend. Programming language: C ++, C#, 
+            Visual Basic, Java, Python, Golang, SQL SERVER, MYSQL, POSTGRESQL, Oracle Database.)) con la mejor 
+            garantía y calidad de nuestros mercados.</p>
+            <a href="{% static 'portafolio/cv.pdf' %}" class="btn btn-primary btm-lg rounded-0 my-3" target="_blank">Download CV</a>
+        </div>
+    </header>
+
+    <div class="row my-4 text-center">
+
+        <h3>My Projects</h3>
+        <p>Ofrecer un gran servicio en la comercialización de soluciones informáticas ya sea mantenimiento 
+        preventivo, diseño gráfico, ediciones de videos y programación de aplicativos para escritorio, web y movil
+        a través de alta calidad, a través de un excelente equipo de trabajo con el fin de satisfacer con 
+        rapidez, amabilidad, cortesía y de manera integral las necesidades de nuestros clientes.​</p>
+
+        {% for project in projects %}
+
+        <div class="col-md-4 p-4">
+            <div class="card bg-black card-project">
+                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="card-img-top">
+                <div class="card-body">
+                    <h2>{{ project.title }}</h2>
+                    <p>{{ project.description }}</p>
+                    
+                    {% if project.url %}
+                    <a href="{{ project.url }}" class="btn btn-dark rounded-0 btn-sm" target="_blank">{{ project.url }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+{% endblock %}
+    </div>
